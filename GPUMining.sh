@@ -20,7 +20,7 @@ ohgodatool="~/repo/OhGodATool/ohgodatool"
 mclock=2000 #default was ~
 cclock=1100 #default was 1250
 
-for i in {0..6}; do
+for card in {0..6}; do
   if [[ -e /sys/class/drm/card$i/device/pp_table ]]; then
      echo "Card Detected in Slot: $i"
      echo "Updating memory clock to: $mclock"
