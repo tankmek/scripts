@@ -28,10 +28,17 @@ def getInput():
   data.update({'soldier[0][ru]':  check_run_format()})
   data.update({'soldier[0][age]': check_age()})
   data.update({'soldier[0][gender]': check_gender()})
+def is_int(s):
+  try: 
+    int(s)
+    return int(s)
+  except ValueError:
+    print ("Bad Input")
+    exit(1)
 # Set boundaries for age the
 # user can input
 def check_age():
-  age = int(input("Enter Age:"))
+  age = is_int(input("Enter Age: "))
   if age < 17 or age > 100:
       # Retirement after 65 ? 
       print ("Age must be between 17-65")
@@ -41,13 +48,13 @@ def check_age():
 # reps on the APFT chart is 100
 # and u can't do less than 0
 def check_pu():
-    raw = int(input("Enter PU Reps:"))
+    raw = is_int(input("Enter PU Reps: "))
     if raw < 0 or raw > 100:
         print ("Enter a number between 0-100")
         exit(1)
     return raw
 def check_su():
-    raw = int(input("Enter SU Reps: "))
+    raw = is_int(input("Enter SU Reps: "))
     if raw < 0 or raw > 100:
         print ("enter a number between 0-100")
         exit(1)
@@ -56,15 +63,18 @@ def check_su():
 # in between the minutes and seconds
 # so we check for that here
 def check_run_format():
-    run_fmt = input("Enter Raw RU (00:00):")
-    if ':' not in run_fmt and len(run_fmt) != 5:
+    run_fmt = input("Enter Raw RU (00:00): ")
+    if ':' not in run_fmt or len(run_fmt) != 5:
         print ("Run time format 00:00")
         exit(1)
+    elif not is_int(run_fmt.split(':')[0]) or not is_int(run_fmt.split(':')[1]):
+        exit(1)
+
     return run_fmt
 #simplify the process and only get
 #one char for gender and lowercase it
 def check_gender():
-    gender = (input("Enter Gender (M/F):")).lower()
+    gender = (input("Enter Gender (M/F): ")).lower()
     if len(gender) > 1:
         print ("Enter single character")
         exit(1)
