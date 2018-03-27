@@ -67,9 +67,10 @@ def check_run_format():
     if ':' not in run_fmt or len(run_fmt) != 5:
         print ("Run time format 00:00")
         exit(1)
-    elif not is_int(run_fmt.split(':')[0]) or not is_int(run_fmt.split(':')[1]):
-        exit(1)
 
+    is_int(run_fmt.split(':')[0])
+    is_int(run_fmt.split(':')[1])
+    
     return run_fmt
 #simplify the process and only get
 #one char for gender and lowercase it
@@ -83,6 +84,12 @@ def check_gender():
     if 'f' in str(gender):
         return "Female"
 
+def check_points(p):
+  if p is None:
+    print ("Bad input")
+    exit(1)
+
+
 def apft_score():
   print ("==========================")
 ## This is the part that interacts with
@@ -92,14 +99,20 @@ def apft_score():
 # bytes so we need decode() here
   lines = response.content.decode()
   lines = str(lines).split('\n')
+  
   points = re_points.search(lines[33])
+  check_points(points)
   print ("Push Up Points: ", points.group())
   points = re_points.search(lines[35]) 
+  check_points(points)
   print ("Sit  Up Points: ", points.group())
   points = re_points.search(lines[37]) 
+  check_points(points)
   print ("2 Mile  Points: ", points.group())
   points = re_fscore.search(lines[40])
+  check_points(points)
   print ("Score: ", points.groups()[0])
+  
 
 def main():
   if sys.version_info < (3,0):
