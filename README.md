@@ -1,5 +1,3 @@
-# Scripts
-
 ## My random collection of scripts for stuff.
 
 ### obj2shell
