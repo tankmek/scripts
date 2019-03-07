@@ -22,7 +22,6 @@
 # THE SOFTWARE.
 import socket
 import argparse
-import platform
 from ipaddress import (
   ip_address,
   ip_network, IPv4Interface
