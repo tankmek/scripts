@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-## c0demech // 02.08.18
+## tankmek // 02.08.18
 ## CCTC Linux Challenge
 ###################
 
