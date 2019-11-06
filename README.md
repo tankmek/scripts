@@ -2,7 +2,7 @@
 
 ### obj2shell
 ```
-obj2shell - Parses objdump(1) input and converts it to shellcode
+obj2shell - Parses objdump(1) output and converts it to shellcode
 
 michael@mainz(dev):$ objdump -D shellcode.o|./obj2shell.py 
 Shellcode: 36 bytes
